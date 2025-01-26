@@ -39,11 +39,6 @@ const App = () => {
         handleChange={handleEditorChange} // Pass the handleChange function
         placeholder="Start typing your markdown here..." // Optional: placeholder text
       />
-      
-      <div>
-        <h3>Output:</h3>
-        <pre>{editorValue}</pre> {/* Display the output of the editor */}
-      </div>
     </div>
   );
 };
