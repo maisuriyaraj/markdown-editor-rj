@@ -1,1 +1,43 @@
-{"name":"markdown-editor-rj","version":"1.1.4","description":"","main":"dist/index.js","type":"module","module":"dist/index.es.js","scripts":{"build":"rollup -c --bundleConfigAsCjs"},"keywords":[],"author":"","license":"ISC","dependencies":{"@rollup/plugin-url":"^8.0.2","bootstrap-icons":"^1.11.3","react":">=16.8","react-dom":">=16.8"},"devDependencies":{"@rollup/plugin-commonjs":"^28.0.2","@rollup/plugin-node-resolve":"^16.0.0","@rollup/plugin-typescript":"^12.1.2","@types/react":"^19.0.8","@types/react-dom":"^19.0.3","rollup":"^4.32.0","rollup-plugin-commonjs":"^10.1.0","rollup-plugin-node-resolve":"^5.2.0","rollup-plugin-peer-deps-external":"^2.2.4","rollup-plugin-postcss":"^4.0.2","rollup-plugin-typescript2":"^0.36.0","typescript":"^5.7.3"},"peerDependencies":{"react":">=16.8","react-dom":">=16.8"}}
+{
+    "name": "markdown-editor-rj",
+    "version": "1.1.7",
+    "description": "A lightweight Markdown editor for ReactJS and NextJS",
+    "main": "dist/index.js",
+    "type": "module",
+    "module": "dist/index.es.js",
+    "scripts": {
+        "build": "rollup -c --bundleConfigAsCjs"
+    },
+    "keywords": ["markdown", "editor", "react", "nextjs"],
+    "author": "Raj Maisuriya",
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/maisuriyaraj/markdown-editor-rj.git"
+    },
+    "dependencies": {
+        "@rollup/plugin-url": "^8.0.2",
+        "bootstrap-icons": "^1.11.3",
+        "react": ">=16.8",
+        "react-dom": ">=16.8"
+    },
+    "devDependencies": {
+        "@rollup/plugin-commonjs": "^28.0.2",
+        "@rollup/plugin-node-resolve": "^16.0.0",
+        "@rollup/plugin-typescript": "^12.1.2",
+        "@types/react": "^19.0.8",
+        "@types/react-dom": "^19.0.3",
+        "rollup": "^4.32.0",
+        "rollup-plugin-commonjs": "^10.1.0",
+        "rollup-plugin-node-resolve": "^5.2.0",
+        "rollup-plugin-peer-deps-external": "^2.2.4",
+        "rollup-plugin-postcss": "^4.0.2",
+        "rollup-plugin-typescript2": "^0.36.0",
+        "typescript": "^5.7.3"
+    },
+    "peerDependencies": {
+        "react": ">=16.8",
+        "react-dom": ">=16.8"
+    },
+    "homepage": "https://github.com/maisuriyaraj/markdown-editor-rj#readme"
+}
