@@ -1,0 +1,11 @@
+# Node modules
+node_modules/
+
+# Distribution folder
+dist/
+
+# Optional: Ignore other common build artifacts
+/build/
+/*.log
+/.env
+/.vscode/
