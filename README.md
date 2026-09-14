@@ -30,18 +30,31 @@ const App = () => {
     setEditorValue(newValue);
   };
 
+  const handleSubmit = () => {
+    // ...submit editorValue somewhere...
+    setEditorValue(''); // Clear the editor after submit
+  };
+
   return (
     <div>
       <h1>Markdown Editor Example</h1>
       
       {/* Markdown Editor Component */}
       <MarkdownEditor
+        value={editorValue} // Optional: pass this to drive the editor's content from the parent
         handleChange={handleEditorChange} // Pass the handleChange function
         placeholder="Start typing your markdown here..." // Optional: placeholder text
       />
+      <button onClick={handleSubmit}>Submit</button>
     </div>
   );
 };
 
 export default App;
+```
+
+`value` is optional. Pass it when you need to set, pre-fill, or clear the
+editor's content from outside (e.g. the "Clear after submit" pattern above).
+Omit it entirely and the component manages its own text internally, same as
+before.
 

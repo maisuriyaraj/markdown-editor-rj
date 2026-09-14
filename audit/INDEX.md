@@ -2,8 +2,8 @@
 
 ID | Category | Severity | Title | File(s) | Status
 ---|---|---|---|---|---
-BUG-001 | Bug | High | Hardcoded textarea id breaks any page with more than one editor | src/MarkdownEditor.tsx | Open
-BUG-002 | Bug | High | Editor has no way to receive or reset its text from outside | src/MarkdownEditor.tsx | Open
+BUG-001 | Bug | High | Hardcoded textarea id breaks any page with more than one editor | src/MarkdownEditor.tsx | Fixed
+BUG-002 | Bug | High | Editor has no way to receive or reset its text from outside | src/MarkdownEditor.tsx | Fixed
 BUG-003 | Bug | Medium | `rows`/`maxLength`/`placeholder` required in types but README omits them | src/MarkdownEditor.tsx, README.md | Open
 BUG-004 | Bug | Low | Toolbar formatting can push text past `maxLength` | src/MarkdownEditor.tsx | Open
 BUG-005 | Bug | Medium | Toolbar buttons have no accessible name | src/MarkdownEditor.tsx | Open
