@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useId, useRef, useState } from 'react';
 import './global.css';
 
 interface Props {
+  value?: string;
   handleChange: (value: string) => void;
   handlePaste?: (e: React.ClipboardEvent<HTMLTextAreaElement>) => void;
   handleKeyDown?: (e: React.KeyboardEvent<HTMLTextAreaElement>) => void;
@@ -20,14 +21,28 @@ interface Props {
 
 
 const MarkdownEditor: React.FC<Props> = (props) => {
-  const { handleChange,handlePaste, handleKeyDown,onBlur,onFocus,placeholder,rows,maxLength,name,disabled,readOnly,autoFocus,required,spellCheck } = props;
+  const { value,handleChange,handlePaste, handleKeyDown,onBlur,onFocus,placeholder,rows,maxLength,name,disabled,readOnly,autoFocus,required,spellCheck } = props;
   const [text, setText] = useState('');
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const textareaId = useId();
+  const isControlled = value !== undefined;
+  const displayValue = isControlled ? value : text;
+  const pendingSelection = useRef<{ start: number; end: number } | null>(null);
+
+  useEffect(() => {
+    if (pendingSelection.current && textareaRef.current) {
+      const { start, end } = pendingSelection.current;
+      textareaRef.current.setSelectionRange(start, end);
+      pendingSelection.current = null;
+    }
+  }, [displayValue]);
 
   const formatText = (format: string) => {
-    const textarea = document.getElementById('editor') as HTMLTextAreaElement;
+    const textarea = textareaRef.current;
+    if (!textarea) return;
     const { selectionStart, selectionEnd } = textarea;
-    const selectedText = text.slice(selectionStart, selectionEnd);
-  
+    const selectedText = displayValue.slice(selectionStart, selectionEnd);
+
     let formattedText = '';
   
     const toggleFormatting = (format: string, selectedText: string) => {
@@ -55,14 +70,17 @@ const MarkdownEditor: React.FC<Props> = (props) => {
     };
   
     formattedText = toggleFormatting(format, selectedText);
-  
-    const newText = `${text.slice(0, selectionStart)}${formattedText}${text.slice(selectionEnd)}`;
-    setText(newText);
-    handleChange(newText);
-  
-    // Optional: Update cursor position after formatting
+
+    const newText = `${displayValue.slice(0, selectionStart)}${formattedText}${displayValue.slice(selectionEnd)}`;
     const newCursorPos = selectionStart + formattedText.length;
-    textarea.setSelectionRange(newCursorPos, newCursorPos);
+    // In controlled mode the new value only reaches the textarea after it
+    // round-trips through the parent, so the selection is restored by the
+    // effect above once `displayValue` reflects it, rather than set here.
+    pendingSelection.current = { start: newCursorPos, end: newCursorPos };
+    if (!isControlled) {
+      setText(newText);
+    }
+    handleChange(newText);
   };
 
   return (
@@ -74,10 +92,17 @@ const MarkdownEditor: React.FC<Props> = (props) => {
         <button className='toolbar-button' onClick={() => formatText('ul')}><i className="bi bi-list-ul"></i></button>
       </div>
       <textarea
-        id="editor"
-        value={text}
+        id={textareaId}
+        ref={textareaRef}
+        value={displayValue}
         maxLength={maxLength || 1000}
-        onChange={(e) => { setText(e.target.value); handleChange(e.target.value); }}
+        onChange={(e) => {
+          const newValue = e.target.value;
+          if (!isControlled) {
+            setText(newValue);
+          }
+          handleChange(newValue);
+        }}
         onPaste={handlePaste}
         onKeyDown={handleKeyDown}
         onFocus={onFocus}
