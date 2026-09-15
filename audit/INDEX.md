@@ -4,10 +4,10 @@ ID | Category | Severity | Title | File(s) | Status
 ---|---|---|---|---|---
 BUG-001 | Bug | High | Hardcoded textarea id breaks any page with more than one editor | src/MarkdownEditor.tsx | Fixed
 BUG-002 | Bug | High | Editor has no way to receive or reset its text from outside | src/MarkdownEditor.tsx | Fixed
-BUG-003 | Bug | Medium | `rows`/`maxLength`/`placeholder` required in types but README omits them | src/MarkdownEditor.tsx, README.md | Open
-BUG-004 | Bug | Low | Toolbar formatting can push text past `maxLength` | src/MarkdownEditor.tsx | Open
-BUG-005 | Bug | Medium | Toolbar buttons have no accessible name | src/MarkdownEditor.tsx | Open
-BUG-006 | Bug | Medium | Cursor position set before React updates the DOM | src/MarkdownEditor.tsx | Open
+BUG-003 | Bug | Medium | `rows`/`maxLength`/`placeholder` required in types but README omits them | src/MarkdownEditor.tsx, README.md | Fixed
+BUG-004 | Bug | Low | Toolbar formatting can push text past `maxLength` | src/MarkdownEditor.tsx | Fixed
+BUG-005 | Bug | Medium | Toolbar buttons have no accessible name | src/MarkdownEditor.tsx | Fixed
+BUG-006 | Bug | Medium | Cursor position set before React updates the DOM | src/MarkdownEditor.tsx | Fixed (unverified in browser)
 IMP-001 | Improvement | Low | No cursor placement for empty-selection formatting | src/MarkdownEditor.tsx | Open
 DEBT-001 | Tech Debt | Low | Repeated toggle-marker logic and inconsistent formatting | src/MarkdownEditor.tsx | Open
 BUG-007 | Bug | Critical | global.css resets and restyles the entire host page, not just the editor | src/global.css | Open
